@@ -12,7 +12,7 @@
   <div class="col-md-7">
 
     <video width="100%" height="400" controls>
-      <source src="{{ Storage::url($video->video) }}" type="video/mp4">
+      <source src="{{ Storage::url($video->video) }}">
       Your browser does not support the video tag.
     </video>
 
