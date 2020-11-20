@@ -55,7 +55,7 @@
     <b style="padding-left: 20px;">All Comments:</b>
     @foreach($comments as $comment)
     <div class="col-md-12" style="background-color: #ffd3fa; padding: 15px; margin: 20px 10px;">
-      <h6>@<b>{{ $comment->name }}</b></h6>
+      <h6>@<b>{{ $comment->name }}</b> <span style="background: #bab3d4;padding: 2px 6px;font-size: 10px;">Age-{{ $comment->age }}</span><span style="color:#6e72e0">  {{ $comment->rating }} star</span></h6>
       <p>{{ $comment->comment }}</p>
       <span>DATE: {{ $comment->created_at }}</span>
     </div>
