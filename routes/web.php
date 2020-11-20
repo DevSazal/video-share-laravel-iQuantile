@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // call Controller
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,7 @@ Route::post('/register',[UserController::class, 'registerUser'])->name('register
 Route::get('/login',[UserController::class, 'loginPage']);
 Route::post('/login',[UserController::class, 'loginUser'])->name('login');
 
-Route::get('logout',[UserController::class, 'logout'])->name('logout');
+Route::get('/logout',[UserController::class, 'logout'])->name('logout');
+
+// Protected Admin Area
+Route::get('/dashboard',[Admin\DefaultController::class, 'main']);
