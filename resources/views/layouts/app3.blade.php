@@ -31,7 +31,7 @@
       <!-- A grey horizontal navbar that becomes vertical on small screens -->
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="#"><b>Logo</b></a>
+        <a class="navbar-brand" href="{{ url('/') }}"><b>Logo</b></a>
 
         <!-- Links -->
         @if (Route::has('login'))

@@ -14,4 +14,10 @@ class DefaultController extends Controller
       $array['videos'] = Video::paginate(6);
       return view('index')->with($array);
     }
+
+    public function openVideo($id){
+      // Video Playing page by student
+      $array['video'] = Video::find($id);
+      return view('video')->with($array);
+    }
 }

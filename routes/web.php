@@ -30,6 +30,7 @@ Route::post('/login',[UserController::class, 'loginUser'])->name('login');
 Route::get('/logout',[UserController::class, 'logout'])->name('logout');
 
 Route::get('/',[DefaultController::class, 'index']);
+Route::get('/video/{id}',[DefaultController::class, 'openVideo']);
 
 // Protected Admin Area
 Route::get('/dashboard',[Admin\DefaultController::class, 'main']);
