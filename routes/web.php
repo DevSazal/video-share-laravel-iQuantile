@@ -29,3 +29,4 @@ Route::get('/logout',[UserController::class, 'logout'])->name('logout');
 
 // Protected Admin Area
 Route::get('/dashboard',[Admin\DefaultController::class, 'main']);
+Route::post('/dashboard/upload',[Admin\DefaultController::class, 'storeVideo'])->name('storeVideo');
