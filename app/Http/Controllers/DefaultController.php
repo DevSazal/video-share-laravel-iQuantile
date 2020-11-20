@@ -19,6 +19,14 @@ class DefaultController extends Controller
     public function openVideo($id){
       // Video Playing page by student
       $array['video'] = Video::find($id);
+      $array['top_ratings'] = Comment::where('video_id', $id)
+                        ->orderBy('rating', 'DESC')
+                        ->take(3)->get();
+      $array['avgRate'] = Comment::where('video_id', $id)
+                        ->avg('rating');
+      $array['comments'] = Comment::where('video_id', $id)
+                          ->get();
+
       return view('video')->with($array);
     }
 

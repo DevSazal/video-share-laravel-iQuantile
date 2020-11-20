@@ -32,6 +32,17 @@
   <div class="col-md-5" style="padding-left: 50px;">
     <div class="" style="padding-top: 40px;">
       <b>Top Responses</b>
+      <br>
+
+      <br>
+      @foreach($top_ratings as $top)
+      <p>{{ $top->name }} <b style="color:#4ba756">({{ $top->rating }} star)</b></p>
+      @endforeach
+      <br>
+
+      <br>
+      <b>Avarage Response Rating: </b>
+      <h5 style="color:red">{{ round($avgRate, 2) }}</h5>
     </div>
   </div>
 
@@ -39,6 +50,19 @@
 </div>
 
 
+<div class="" style="">
+  <div class="row">
+    <b style="padding-left: 20px;">All Comments:</b>
+    @foreach($comments as $comment)
+    <div class="col-md-12" style="background-color: #ffd3fa; padding: 15px; margin: 20px 10px;">
+      <h6>@<b>{{ $comment->name }}</b></h6>
+      <p>{{ $comment->comment }}</p>
+      <span>DATE: {{ $comment->created_at }}</span>
+    </div>
+    @endforeach
+
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-12">
