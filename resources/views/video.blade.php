@@ -33,9 +33,85 @@
     <div class="" style="padding-top: 40px;">
       <b>Top Responses</b>
     </div>
-
   </div>
 
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <b>Add a Comment</b>
+    <form action="{{ route('storeComment') }}" method="POST" style=" background: #efdaff; padding: 10px;">
+      @csrf
+      <input type="hidden" name="video_id" value="{{ $video->id }}">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName">Name</label>
+          <input type="text" name="name" class="form-control" id="inputName">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="input">Age</label>
+          <input type="number" name="age" class="form-control" id="input">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email</label>
+          <input type="email" name="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="input">Rating</label>
+          <div class="">
+
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio">
+                  <input type="radio" class="form-check-input" id="radio" name="rating" value="1"> 1
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio">
+                  <input type="radio" class="form-check-input" id="radio" name="rating" value="2"> 2
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio">
+                  <input type="radio" class="form-check-input" id="radio" name="rating" value="3"> 3
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio">
+                  <input type="radio" class="form-check-input" id="radio" name="rating" value="4"> 4
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio">
+                  <input type="radio" class="form-check-input" id="radio" name="rating" value="5"> 5
+                </label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="input">Comment</label>
+          <textarea name="comment" class="form-control" rows="3" id="input"></textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="form-check">
+
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="{{ url('/') }}"> Go to home page ...</a>
+    </form>
+
+  </div>
 </div>
 
 

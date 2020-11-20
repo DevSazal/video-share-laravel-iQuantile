@@ -31,6 +31,7 @@ Route::get('/logout',[UserController::class, 'logout'])->name('logout');
 
 Route::get('/',[DefaultController::class, 'index']);
 Route::get('/video/{id}',[DefaultController::class, 'openVideo']);
+Route::post('/video/store-comment',[DefaultController::class, 'storeComment'])->name('storeComment');
 
 // Protected Admin Area
 Route::get('/dashboard',[Admin\DefaultController::class, 'main']);
