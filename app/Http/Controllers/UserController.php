@@ -30,9 +30,9 @@ class UserController extends Controller
       //
 
       if ($validator->fails()) {
-          // return back()->withErrors($validator)
-          //               ->withInput();
-          return dd($validator->errors());
+          return back()->withErrors($validator)
+                        ->withInput();
+          // return dd($validator->errors());
       }else {
         // ... rename image
         $ext = $request->image->getClientOriginalExtension();
@@ -47,6 +47,7 @@ class UserController extends Controller
         $result = $user->save();
 
           if($result){
+            $request->session()->flash('register', $request->email);
             // return ["result" => "Data has been saved."];
             return redirect('/login');
           }else{

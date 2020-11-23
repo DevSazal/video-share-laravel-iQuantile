@@ -12,6 +12,20 @@
   <p></p>
 </div>
 
+@if(\Session::has('register'))
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong> You have been successfully registered as <b>{{ session('register') }}</b>.
+  </div>
+@endif
+
+@if(session('error'))
+  <div class="alert alert-danger alert-dismissible" style="">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ session('error') }}</strong>.
+  </div>
+@endif
+
 <form action="{{ route('login') }}" method="POST">
   @csrf
   <div class="form-row">
