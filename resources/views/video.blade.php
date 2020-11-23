@@ -7,6 +7,12 @@
 
 @section('content')
 
+@if(\Session::has('added_comment'))
+  <div class="alert alert-success alert-dismissible" style="margin-top: 25px; margin-bottom: -25px;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong> Comment has been submitted for <b>{{ session('added_comment') }}</b>.
+  </div>
+@endif
 
 <div class="row" style="padding-top: 25px; padding-bottom: 25px;">
   <div class="col-md-7">
@@ -73,17 +79,32 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputName">Name</label>
-          <input type="text" name="name" class="form-control" id="inputName">
+          <input type="text" name="name" class="form-control" id="inputName" value="{{ old('name') }}">
+          @error('name')
+              <div class="mt-2" style="color: #dc3545;">
+                  {{ $message }}
+              </div>
+          @enderror
         </div>
         <div class="form-group col-md-6">
           <label for="input">Age</label>
-          <input type="number" name="age" class="form-control" id="input">
+          <input type="number" name="age" class="form-control" id="input" value="{{ old('age') }}">
+          @error('age')
+              <div class="mt-2" style="color: #dc3545;">
+                  {{ $message }}
+              </div>
+          @enderror
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail">Email</label>
-          <input type="email" name="email" class="form-control" id="inputEmail">
+          <input type="email" name="email" class="form-control" id="inputEmail" value="{{ old('email') }}">
+          @error('email')
+              <div class="mt-2" style="color: #dc3545;">
+                  {{ $message }}
+              </div>
+          @enderror
         </div>
         <div class="form-group col-md-6">
           <label for="input">Rating</label>
@@ -116,12 +137,22 @@
             </div>
 
           </div>
+          @error('rating')
+              <div class="mt-2" style="color: #dc3545;">
+                  {{ $message }}
+              </div>
+          @enderror
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="input">Comment</label>
-          <textarea name="comment" class="form-control" rows="3" id="input"></textarea>
+          <textarea name="comment" class="form-control" rows="3" id="input">{{ old('comment') }}</textarea>
+          @error('comment')
+              <div class="mt-2" style="color: #dc3545;">
+                  {{ $message }}
+              </div>
+          @enderror
         </div>
       </div>
 

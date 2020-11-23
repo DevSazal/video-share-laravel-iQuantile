@@ -42,9 +42,9 @@ class DefaultController extends Controller
       ]);
 
       if ($validator->fails()) {
-        // return back()->withErrors($validator)
-        //               ->withInput();
-        return dd($validator->errors());
+        return back()->withErrors($validator)
+                      ->withInput();
+        // return dd($validator->errors());
       }else {
 
       $c = new Comment;
@@ -57,6 +57,8 @@ class DefaultController extends Controller
       $result = $c->save();
 
         if($result){
+          // make a flash session for one time success message
+          $request->session()->flash('added_comment', $request->name);
           // return ["result" => "Comment has been saved."];
           return redirect('/video/'.$request->video_id);
         }else{

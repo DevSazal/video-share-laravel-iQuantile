@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->integer('video_id');
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique(); // make sure: unique email 
             $table->integer('rating');
             $table->longText('comment');
             $table->integer('age');

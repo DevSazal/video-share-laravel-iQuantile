@@ -9,6 +9,7 @@ use Validator; // validator class for rules
 use App\Models\User;
 use App\Models\Video;
 use Auth;
+// use Session;
 
 class DefaultController extends Controller
 {
@@ -25,14 +26,14 @@ class DefaultController extends Controller
       public function storeVideo(Request $request){
         // code...  Data Validation for video
         $validator = Validator::make($request->all(), [
-          'description' => 'string',
-          'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm,qt,mov,avi,wmv,mkv'
+          'description' => 'required|string',
+          'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm,qt,mov,avi,wmv,mkv|max:25000000' // 25 Mb
         ]);
 
         if ($validator->fails()) {
-          // return back()->withErrors($validator)
-          //               ->withInput();
-          return dd($validator->errors());
+          return back()->withErrors($validator)
+                        ->withInput();
+          // return dd($validator->errors());
         }else {
 
           // ... rename file for security
@@ -48,8 +49,9 @@ class DefaultController extends Controller
         $result = $video->save();
 
           if($result){
-            return ["result" => "Video has been saved."];
-            // return redirect('/dashboard');
+            $request->session()->flash('uploaded_video', Auth::user()->name);
+            // return ["result" => "Video has been saved."];
+            return redirect('/dashboard');
           }else{
             return ["result" => "Operation Failed!"];
           }
