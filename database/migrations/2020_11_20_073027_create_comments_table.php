@@ -15,9 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('video_id');
+            $table->foreignId('video_id')->constrained()->onDelete('cascade'); // foreignkey for video table
             $table->string('name');
-            $table->string('email')->unique(); // make sure: unique email 
+            $table->string('email')->unique(); // make sure: unique email
             $table->integer('rating');
             $table->longText('comment');
             $table->integer('age');

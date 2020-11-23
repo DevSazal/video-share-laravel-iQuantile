@@ -13,6 +13,7 @@
     <center>
       <h4>Video: {{$video->id }}</h4>
       <h6>Uploader: {{$video->user->name }}</h6>
+      <p>Number of Response: <b>{{$video->comments->count() }}</b></p>
       <a href="{{ url('/video/'.$video->id) }}" class="btn btn-outline-danger">Open Video...</a>
     </center>
   </div>
